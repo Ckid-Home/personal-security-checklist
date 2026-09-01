@@ -1,6 +1,6 @@
 // src/routes/articles/[slug].tsx
 import { component$, Resource, useResource$, useStore } from '@builder.io/qwik';
-import { type DocumentHead, useLocation } from '@builder.io/qwik-city';
+import { type DocumentHead, type StaticGenerateHandler, useLocation } from '@builder.io/qwik-city';
 import { marked } from "marked";
 
 import articles from '~/data/articles';
@@ -35,18 +35,20 @@ export default component$(() => {
     const renderer = new marked.Renderer();
 
     // Override function to handle headings
-    renderer.heading = (text, level) => {
+    renderer.heading = function ({ tokens, depth }) {
+      const text = this.parser.parseInline(tokens);
       const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-      return `<h${level} id="${escapedText}">${text}</h${level}>`;
+      return `<h${depth} id="${escapedText}">${text}</h${depth}>`;
     };
 
     // Override function to handle links
-    renderer.link = (href, title, text) => {
+    renderer.link = function ({ href, title, tokens }) {
+      const text = this.parser.parseInline(tokens);
       if (href.startsWith('/')) {
         href = `https://github.com/Lissy93/personal-security-checklist/blob/old-version/${href}`;
       }
-      title = title ? `title="${title}"` : '';
-      return `<a href="${href}" ${title} target="_blank" rel="noopener noreferrer">${text}</a>`;
+      const titleAttr = title ? `title="${title}"` : '';
+      return `<a href="${href}" ${titleAttr} target="_blank" rel="noopener noreferrer">${text}</a>`;
     };
 
     // Sanitize the input to remove <script> tags
@@ -122,3 +124,6 @@ export const head: DocumentHead = {
   ],
 };
 
+export const onStaticGenerate: StaticGenerateHandler = () => ({
+  params: articles.map((article) => ({ slug: article.slug })),
+});

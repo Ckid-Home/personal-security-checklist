@@ -19,7 +19,13 @@ export default defineConfig((): UserConfig => {
         ]
       })
     ],
+    optimizeDeps: {
+      include: ["chart.js", "js-yaml", "marked", "progressbar.js", "tailwindcss/colors"],
+    },
     server: {
+      fs: {
+        allow: [".", "../personal-security-checklist.yml"],
+      },
       headers: {
         "Cache-Control": "public, max-age=0",
       },

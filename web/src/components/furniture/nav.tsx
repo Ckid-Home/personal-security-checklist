@@ -32,7 +32,7 @@ export default component$(() => {
     <>
       <input id="my-drawer-3" type="checkbox" class="drawer-toggle" /> 
       <div class="navbar bg-base-100">
-        <div class="flex-1">
+        <div class="flex-1 flex items-center">
           <div class="flex-none md:hidden">
             <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -43,7 +43,7 @@ export default component$(() => {
             <h1>Digital Defense</h1>
           </a>
         </div>
-        <div class="flex-none hidden md:flex">
+        <div class="flex-none hidden md:flex items-center">
           <ul class="menu menu-horizontal px-1">
             <li>
               <details>
@@ -53,7 +53,7 @@ export default component$(() => {
                 </summary>
                 <ul class="p-2 bg-base-100 rounded-t-none z-10">
                   {data.value.map((item: Section, index: number) => (
-                    <li key={`checklist-nav-${index}`} class={`hover:bg-${item.color}-600 hover:bg-opacity-15`}>
+                    <li key={`checklist-nav-${index}`} class={`hover:bg-${item.color}-600/15`}>
                       <a href={`/checklist/${item.slug}`}>
                       <Icon color={item.color} class="mr-2" icon={item.icon} width={16} height={16}  />
                         {item.title}
@@ -71,17 +71,17 @@ export default component$(() => {
             </li>
           </ul>
           <div class="tooltip tooltip-bottom" data-tip="Theme">
-            <label class="cursor-pointer grid place-items-center">
+            <label class="toggle text-base-content cursor-pointer">
               <input
                 type="checkbox"
                 checked={theme.theme === 'dark'}
                 onClick$={() => {
                   setTheme(theme.theme === 'dark' ? 'light' : 'dark');
                 }}
-                class="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"
+                class="theme-controller"
               />
-              <svg class="col-start-1 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
-              <svg class="col-start-2 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </label>
           </div>
           <li class="list-none px-2">
@@ -109,7 +109,7 @@ export default component$(() => {
             <a href="/checklist"><Icon class="mr-2" icon="all" width={16} height={16} />Checklists</a>
             <ul>
               {data.value.map((item: Section, index: number) => (
-              <li key={`checklist-side-${index}`} class={`hover:bg-${item.color}-600 hover:bg-opacity-15`}>
+              <li key={`checklist-side-${index}`} class={`hover:bg-${item.color}-600/15`}>
                 <a href={`/checklist/${item.slug}`}>
                 <Icon color={item.color} class="mr-2" icon={item.icon} width={16} height={16}  />
                   {item.title}
@@ -166,7 +166,7 @@ export default component$(() => {
 
       <dialog id="settings_modal" class="modal">
         <div class="modal-box">
-          <div class="tabs tabs-lifted">
+          <div class="tabs tabs-lift">
             <p class="tab tab-active">Settings</p>
             <a class="tab" href="/about">About</a>
           </div>

@@ -1,6 +1,6 @@
 
 import { $, useStore, useOnWindow } from '@builder.io/qwik';
-import jsyaml from 'js-yaml';
+import * as jsyaml from 'js-yaml';
 import type { Sections } from '~/types/PSC';
 
 export const useChecklist = () => {

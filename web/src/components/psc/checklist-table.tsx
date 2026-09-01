@@ -170,23 +170,23 @@ export default component$((props: { section: Section }) => {
     </div>
 
     {showFilters.value && (
-      <div class="flex flex-wrap justify-between bg-base-100 rounded px-4 py-1 transition-all"
+      <div class="flex flex-wrap justify-between bg-base-100 rounded-sm px-4 py-1 transition-all"
         style={{ opacity: stage.value === "enterTo" ? 1 : 0, height: stage.value === "enterTo" ? 'auto' : 0 }}> 
         {/* Filter by completion */}
         <div class="flex justify-end items-center gap-1">
           <p class="font-bold text-sm">Show</p>
           <label onClick$={() => (filterState.show = 'all')}
-            class="p-2 rounded hover:bg-front transition-all cursor-pointer flex gap-2">
+            class="p-2 rounded-sm hover:bg-front transition-all cursor-pointer flex gap-2">
             <span class="text-sm">All</span> 
             <input type="radio" name="show" class="radio radio-sm checked:radio-info" checked />
           </label>
           <label onClick$={() => (filterState.show = 'remaining')}
-            class="p-2 rounded hover:bg-front transition-all cursor-pointer flex gap-2">
+            class="p-2 rounded-sm hover:bg-front transition-all cursor-pointer flex gap-2">
             <span class="text-sm">Remaining</span> 
             <input type="radio" name="show" class="radio radio-sm checked:radio-error" />
           </label>
           <label onClick$={() => (filterState.show = 'completed')}
-            class="p-2 rounded hover:bg-front transition-all cursor-pointer flex gap-2">
+            class="p-2 rounded-sm hover:bg-front transition-all cursor-pointer flex gap-2">
             <span class="text-sm">Completed</span> 
             <input type="radio" name="show" class="radio radio-sm checked:radio-success" />
           </label>
@@ -194,7 +194,7 @@ export default component$((props: { section: Section }) => {
         {/* Filter by level */}
         <div class="flex justify-end items-center gap-1">
           <p class="font-bold text-sm">Filter</p>
-          <label class="p-2 rounded hover:bg-front transition-all cursor-pointer flex gap-2">
+          <label class="p-2 rounded-sm hover:bg-front transition-all cursor-pointer flex gap-2">
             <span class="text-sm">Basic</span> 
             <input
               type="checkbox"
@@ -203,7 +203,7 @@ export default component$((props: { section: Section }) => {
               class="checkbox checkbox-sm checked:checkbox-success"
             />
           </label>
-          <label class="p-2 rounded hover:bg-front transition-all cursor-pointer flex gap-2">
+          <label class="p-2 rounded-sm hover:bg-front transition-all cursor-pointer flex gap-2">
             <span class="text-sm">Optional</span> 
             <input
               type="checkbox"
@@ -213,7 +213,7 @@ export default component$((props: { section: Section }) => {
             />
           </label>
           <label
-            class="p-2 rounded hover:bg-front transition-all cursor-pointer flex gap-2">
+            class="p-2 rounded-sm hover:bg-front transition-all cursor-pointer flex gap-2">
             <span class="text-sm">Advanced</span> 
             <input
               type="checkbox"
@@ -256,10 +256,10 @@ export default component$((props: { section: Section }) => {
           const isItemIgnored = isIgnored(itemId);
           return (
             <tr key={index} class={[
-              'rounded-sm transition-all',
-              isItemCompleted ? `bg-${badgeColor} bg-opacity-10` : '',
-              isItemIgnored? 'bg-neutral bg-opacity-15' : '',
-              !isItemIgnored && !isItemCompleted ? `hover:bg-opacity-5 hover:bg-${badgeColor}` : '',
+              'rounded-xs transition-all',
+              isItemCompleted ? `bg-${badgeColor}/10` : '',
+              isItemIgnored? 'bg-neutral/15' : '',
+              !isItemIgnored && !isItemCompleted ? `hover:bg-${badgeColor}/5` : '',
               ]}>
               <td class="text-center">
                 <input

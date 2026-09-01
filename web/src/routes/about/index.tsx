@@ -82,7 +82,7 @@ export default component$(() => {
                     data-tip={`Thank you @${contributor.login}`}
                   >
                     <img
-                      class="avatar rounded"
+                      class="avatar rounded-sm"
                       width="64" height="64"
                       src={contributor.avatar_url || contributor.avatarUrl}
                       alt={contributor.login}
@@ -118,7 +118,7 @@ export default component$(() => {
                   data-tip={`@${contributor.login} has contributed ${contributor.contributions} times\n\nClick to view their profile`}
                 >
                   <img
-                    class="avatar rounded"
+                    class="avatar rounded-sm"
                     width="64" height="64"
                     src={contributor.avatar_url}
                     alt={contributor.login}
@@ -167,7 +167,7 @@ export default component$(() => {
             {
               projects.map((project, index) => (
                 <li key={index}>
-                  <img class="rounded inline mr-1" width="20" height="20" alt={project.title} src={project.icon} />
+                  <img class="rounded-sm inline mr-1" width="20" height="20" alt={project.title} src={project.icon} />
                   <a href={project.link} class="link link-secondary" target="_blank" rel="noreferrer">
                     {project.title}
                   </a> - {project.description}
@@ -197,7 +197,7 @@ export default component$(() => {
           And everything else (including all the code), licensed
           under <b><a href="https://gist.github.com/Lissy93/143d2ee01ccc5c052a17">MIT</a></b>.
         </p>
-        <pre class="bg-front whitespace-break-spaces rounded text-xs my-2 mx-auto p-2">
+        <pre class="bg-front whitespace-break-spaces rounded-sm text-xs my-2 mx-auto p-2">
           {license}
         </pre>
         <details class="collapse">

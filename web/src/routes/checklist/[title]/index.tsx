@@ -1,8 +1,9 @@
 import { component$, useContext } from '@builder.io/qwik';
-import { useLocation } from '@builder.io/qwik-city';
+import { useLocation, type StaticGenerateHandler } from '@builder.io/qwik-city';
 import { marked } from 'marked';
 
 import Icon from '~/components/core/icon';
+import checklistData from '~/data/checklist';
 import { ChecklistContext } from '~/store/checklist-context';
 import type { Section } from "~/types/PSC";
 import Table from '~/components/psc/checklist-table';
@@ -53,3 +54,6 @@ export default component$(() => {
   );
 });
 
+export const onStaticGenerate: StaticGenerateHandler = () => ({
+  params: checklistData.map((section) => ({ title: section.slug })),
+});

@@ -48,13 +48,13 @@ export default component$((props: { sections: Section[] }) => {
         <a key={section.slug}
           href={`/checklist/${section.slug}`}
           class={[
-            'card card-side bg-front bg-opacity-25 shadow-md transition-all px-2',
+            'card card-side bg-front shadow-md transition-all px-2',
             `outline-offset-2 outline-${section.color}-400`,
-            'hover:outline hover:outline-10 hover:outline-offset-4 hover:bg-opacity-15',
-            `hover:bg-${section.color}-600`
+            'hover:outline-3 hover:outline-offset-4',
+            `hover:bg-${section.color}-600/15`
           ]}
         >
-          <div class="flex-shrink-0 flex flex-col py-4 h-auto items-stretch justify-evenly">
+          <div class="shrink-0 flex flex-col py-4 h-auto items-stretch justify-evenly">
             <Icon icon={section.icon || 'star'} color={section.color} />
             {(done.value && done.value[index]) ? (
               <p class={`text-${section.color}-400 pt-2 pb-0 px-0 mx-0 my-0`}>
@@ -66,7 +66,7 @@ export default component$((props: { sections: Section[] }) => {
               </p>
             )}
           </div>
-          <div class="card-body flex-grow py-2 pl-4 pr-0">
+          <div class="card-body grow py-2 pl-4 pr-0">
             <h2 class={`card-title text-${section.color}-400 hover:text-${section.color}-500`}>
               {section.title}
             </h2>
