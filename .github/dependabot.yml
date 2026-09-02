@@ -1,0 +1,75 @@
+# Dependabot config for keeping all dependencies up-to-date and secure
+# Grouped by ecosystem as a monthly PR with cool downs enabled
+
+version: 2
+
+updates:
+  # Actions are pinned to commit SHAs
+  - package-ecosystem: github-actions
+    directories:
+      - /
+      - /.github/actions/setup-web
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 2
+    labels:
+      - Dependencies
+    assignees:
+      - lissy93
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  # The Qwik web app (minor + patch bumps together, majors done separate PR for review)
+  - package-ecosystem: npm
+    directory: /web
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
+      semver-major-days: 30
+      semver-minor-days: 14
+      semver-patch-days: 7
+    open-pull-requests-limit: 3
+    labels:
+      - Dependencies
+    assignees:
+      - lissy93
+    commit-message:
+      prefix: chore
+      prefix-development: chore
+      include: scope
+    versioning-strategy: increase
+    groups:
+      web-minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+
+  # Python scripts that generate CHECKLIST.md from the YAML
+  - package-ecosystem: pip
+    directory: /lib
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 1
+    labels:
+      - Dependencies
+    assignees:
+      - lissy93
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      python:
+        patterns:
+          - "*"
