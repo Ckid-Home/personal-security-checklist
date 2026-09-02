@@ -1,4 +1,5 @@
-# CI checks, run against pull requests (including from forks) or manually
+# CI checks, run against pull requests (including from forks) or manually.
+# Local actions use ./ rather than $/, as no actionlint release parses $/ yet.
 name: 🚦 CI
 
 on:
@@ -62,7 +63,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup web
-        uses: ./.github/actions/setup-web
+        uses: ./.github/actions/setup-web # zizmor: ignore[self-repository]
 
       - name: Check formatting
         run: yarn fmt.check
@@ -82,7 +83,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup web
-        uses: ./.github/actions/setup-web
+        uses: ./.github/actions/setup-web # zizmor: ignore[self-repository]
 
       - name: Run ESLint
         run: yarn lint
@@ -102,7 +103,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup web
-        uses: ./.github/actions/setup-web
+        uses: ./.github/actions/setup-web # zizmor: ignore[self-repository]
 
       - name: Run tsc
         run: yarn build.types
@@ -122,7 +123,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup web
-        uses: ./.github/actions/setup-web
+        uses: ./.github/actions/setup-web # zizmor: ignore[self-repository]
 
       - name: Build static site
         run: yarn build.ssg
@@ -143,7 +144,7 @@ jobs:
 
   # The workflows themselves must be valid, and free of known footguns
   workflow-lint:
-    name: ⚙️ Workflow lint
+    name: ⚙️ Workflow review
     needs: changes
     if: needs.changes.outputs.workflows == 'true' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
@@ -157,11 +158,13 @@ jobs:
       - name: Run actionlint
         uses: raven-actions/actionlint@3d39aea434753780c3b3d4a1a31c854b4dbf49d7 # v2.2.0
         with:
+          version: 1.7.12
           fail-on-error: true
 
       - name: Run zizmor
         uses: zizmorcore/zizmor-action@70fb788f84895a7701f5643d103d587e460b5c99 # v0.6.3
         with:
+          version: 1.30.0
           inputs: .github/
           advanced-security: false
           annotations: true
