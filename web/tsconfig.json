@@ -18,8 +18,8 @@
     "noEmit": true,
     "types": ["node", "vite/client"],
     "paths": {
-      "~/*": ["./src/*"],
-    },
+      "~/*": ["./src/*"]
+    }
   },
-  "include": ["src", "./*.d.ts", "./*.config.ts", "./*.config.mjs"],
+  "include": ["src", "./*.d.ts", "./*.config.ts", "./*.config.mjs"]
 }

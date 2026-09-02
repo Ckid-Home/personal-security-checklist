@@ -1,10 +1,10 @@
-import { component$, useContextProvider, Slot } from "@builder.io/qwik";
-import { routeLoader$, type RequestHandler } from "@builder.io/qwik-city";
+import { component$, useContextProvider, Slot } from '@builder.io/qwik';
+import { routeLoader$, type RequestHandler } from '@builder.io/qwik-city';
 
-import Navbar from "~/components/furniture/nav";
-import Footer from "~/components/furniture/footer";
-import { ChecklistContext } from "~/store/checklist-context";
-import checklistData from "~/data/checklist";
+import Navbar from '~/components/furniture/nav';
+import Footer from '~/components/furniture/footer';
+import { ChecklistContext } from '~/store/checklist-context';
+import checklistData from '~/data/checklist';
 
 export const useChecklists = routeLoader$(() => checklistData);
 

@@ -1,4 +1,3 @@
-
 import { $, useStore, useOnWindow } from '@builder.io/qwik';
 import * as jsyaml from 'js-yaml';
 import type { Sections } from '~/types/PSC';
@@ -15,11 +14,14 @@ export const useChecklist = () => {
       });
   });
 
-  useOnWindow('load', $(() => {
-    fetchChecklist().then((checklist) => {
-      state.checklist = checklist as Sections;
-    });
-  }));
+  useOnWindow(
+    'load',
+    $(() => {
+      fetchChecklist().then((checklist) => {
+        state.checklist = checklist as Sections;
+      });
+    }),
+  );
 
   const setChecklist = $((newChecklist: Sections) => {
     state.checklist = newChecklist;
