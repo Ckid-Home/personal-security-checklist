@@ -47,7 +47,7 @@ The source for the website is in [`web/`](https://github.com/Lissy93/personal-se
 The site is built with Qwik, using TypeScript and some components from DaisyUI.
 
 ### Developing
-To run the app locally, or to make code changes, you'll need Node and Git installed.
+To run the app locally, or to make code changes, you'll need Node (20.19+ or 22.12+) and Git installed.
 
 1. Grab the code: `git clone git@github.com:Lissy93/personal-security-checklist.git`
 2. Navigate into the source: `cd personal-security-checklist/web`
@@ -57,7 +57,7 @@ To run the app locally, or to make code changes, you'll need Node and Git instal
 Alternatively, just open this repo in Code Spaces, where everything is already configured and ready to go.
 
 ### Deploying
-To deploy the app, follow the developing steps above, then run `yarn build`, `yarn build.static`. You can then deploy it by copying the `dist/` directory to any CDN, web server or static hosting provider of your choice.
+To deploy the app, follow the developing steps above, then run `yarn build.ssg`. You can then deploy it by copying the `dist/` directory to any CDN, web server or static hosting provider of your choice.
 
 Alternatively, fork the repo and import it into your providers' dashboard. Or use the link below for an easy 1-click deployment 😉
 
